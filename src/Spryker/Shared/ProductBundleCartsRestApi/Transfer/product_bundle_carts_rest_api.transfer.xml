@@ -74,4 +74,8 @@
         <property name="iso2Code" type="string" description="The two-letter ISO code for a country."/>
     </transfer>
 
+    <transfer name="PersistentCartChange">
+        <property name="items" type="Item[]" singular="item" description="A collection of items, typically in a cart, order, or list."/>
+    </transfer>
+
 </transfers>

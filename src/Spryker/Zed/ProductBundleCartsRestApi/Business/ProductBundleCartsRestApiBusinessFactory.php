@@ -8,6 +8,8 @@
 namespace Spryker\Zed\ProductBundleCartsRestApi\Business;
 
 use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
+use Spryker\Zed\ProductBundleCartsRestApi\Business\Expander\BundleItemExpander;
+use Spryker\Zed\ProductBundleCartsRestApi\Business\Expander\BundleItemExpanderInterface;
 use Spryker\Zed\ProductBundleCartsRestApi\Business\Validator\BundleItemValidator;
 use Spryker\Zed\ProductBundleCartsRestApi\Business\Validator\BundleItemValidatorInterface;
 
@@ -22,5 +24,13 @@ class ProductBundleCartsRestApiBusinessFactory extends AbstractBusinessFactory
     public function createBundleItemValidator(): BundleItemValidatorInterface
     {
         return new BundleItemValidator();
+    }
+
+    /**
+     * @return \Spryker\Zed\ProductBundleCartsRestApi\Business\Expander\BundleItemExpanderInterface
+     */
+    public function createBundleItemExpander(): BundleItemExpanderInterface
+    {
+        return new BundleItemExpander();
     }
 }
