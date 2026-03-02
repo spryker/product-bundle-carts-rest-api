@@ -41,9 +41,6 @@ class CopyShipmentToProductBundleQuoteItemExpanderPluginTest extends Unit
      */
     protected ProductBundleCartsRestApiPluginTester $tester;
 
-    /**
-     * @return void
-     */
     public function testDoNothingForQuoteWithoutProductBundles(): void
     {
         // Arrange
@@ -63,9 +60,6 @@ class CopyShipmentToProductBundleQuoteItemExpanderPluginTest extends Unit
         $this->assertEmpty($quoteTransfer->getBundleItems());
     }
 
-    /**
-     * @return void
-     */
     public function testDoNothingForQuoteWithoutItemShipments(): void
     {
         // Arrange
@@ -87,9 +81,6 @@ class CopyShipmentToProductBundleQuoteItemExpanderPluginTest extends Unit
         $this->assertNull($quoteTransfer->getBundleItems()->getIterator()->current()->getShipment());
     }
 
-    /**
-     * @return void
-     */
     public function testDoNothingForBundleItemsWithoutRelatedItems(): void
     {
         // Arrange
@@ -113,9 +104,6 @@ class CopyShipmentToProductBundleQuoteItemExpanderPluginTest extends Unit
         $this->assertNull($quoteTransfer->getBundleItems()->getIterator()->current()->getShipment());
     }
 
-    /**
-     * @return void
-     */
     public function testCopyShipmentFromItemLevelToBundleItems(): void
     {
         // Arrange
@@ -144,9 +132,6 @@ class CopyShipmentToProductBundleQuoteItemExpanderPluginTest extends Unit
         $this->assertSame($shipmentTransfer->getShippingAddress()->toArray(), $bundleShipment->getShippingAddress()->toArray());
     }
 
-    /**
-     * @return void
-     */
     public function testReplaceShipmentForProductBundle(): void
     {
         // Arrange

@@ -12,12 +12,6 @@ use Generated\Shared\Transfer\QuoteTransfer;
 
 class BundleItemValidator implements BundleItemValidatorInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\CartItemRequestTransfer $cartItemRequestTransfer
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return bool
-     */
     public function validateBundleItem(
         CartItemRequestTransfer $cartItemRequestTransfer,
         QuoteTransfer $quoteTransfer

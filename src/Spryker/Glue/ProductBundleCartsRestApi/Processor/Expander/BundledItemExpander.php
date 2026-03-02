@@ -47,11 +47,6 @@ class BundledItemExpander implements BundledItemExpanderInterface
      */
     protected $bundleItemRestResponseBuilder;
 
-    /**
-     * @param \Spryker\Glue\ProductBundleCartsRestApi\Dependency\Client\ProductBundleCartsRestApiToProductBundleClientInterface $productBundleClient
-     * @param \Spryker\Glue\ProductBundleCartsRestApi\Dependency\RestResource\ProductBundleCartsRestApiToCartsRestApiResourceInterface $cartsRestApiResource
-     * @param \Spryker\Glue\ProductBundleCartsRestApi\Processor\RestResponseBuilder\BundleItemRestResponseBuilderInterface $bundleItemRestResponseBuilder
-     */
     public function __construct(
         ProductBundleCartsRestApiToProductBundleClientInterface $productBundleClient,
         ProductBundleCartsRestApiToCartsRestApiResourceInterface $cartsRestApiResource,

@@ -14,38 +14,18 @@ use Spryker\Glue\GlueApplication\Rest\JsonApi\RestResourceInterface;
 
 interface BundleItemRestResponseBuilderInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
-     * @param \Generated\Shared\Transfer\RestItemsAttributesTransfer $restItemsAttributesTransfer
-     *
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResourceInterface
-     */
     public function createBundleItemResource(
         QuoteTransfer $quoteTransfer,
         ItemTransfer $itemTransfer,
         RestItemsAttributesTransfer $restItemsAttributesTransfer
     ): RestResourceInterface;
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
-     * @param \Generated\Shared\Transfer\RestItemsAttributesTransfer $restItemsAttributesTransfer
-     *
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResourceInterface
-     */
     public function createGuestBundleItemResource(
         QuoteTransfer $quoteTransfer,
         ItemTransfer $itemTransfer,
         RestItemsAttributesTransfer $restItemsAttributesTransfer
     ): RestResourceInterface;
 
-    /**
-     * @param \Generated\Shared\Transfer\ItemTransfer $bundleItemTransfer
-     * @param \Generated\Shared\Transfer\RestItemsAttributesTransfer $restItemsAttributesTransfer
-     *
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResourceInterface
-     */
     public function createBundledItemResource(
         ItemTransfer $bundleItemTransfer,
         RestItemsAttributesTransfer $restItemsAttributesTransfer

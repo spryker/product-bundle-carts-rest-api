@@ -14,12 +14,6 @@ use Generated\Shared\Transfer\QuoteTransfer;
 
 class BundleItemExpander implements BundleItemExpanderInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\PersistentCartChangeTransfer $persistentCartChangeTransfer
-     * @param \Generated\Shared\Transfer\QuoteTransfer $guestQuoteTransfer
-     *
-     * @return \Generated\Shared\Transfer\PersistentCartChangeTransfer
-     */
     public function expand(PersistentCartChangeTransfer $persistentCartChangeTransfer, QuoteTransfer $guestQuoteTransfer): PersistentCartChangeTransfer
     {
         if (!$guestQuoteTransfer->getBundleItems()->count()) {

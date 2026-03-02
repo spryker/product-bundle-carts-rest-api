@@ -12,11 +12,6 @@ use Generated\Shared\Transfer\ShipmentTransfer;
 
 class QuoteBundleItemExpander implements QuoteBundleItemExpanderInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuoteTransfer
-     */
     public function expandBundleItemsWithShipment(QuoteTransfer $quoteTransfer): QuoteTransfer
     {
         if (!$quoteTransfer->getBundleItems()->count()) {
@@ -26,11 +21,6 @@ class QuoteBundleItemExpander implements QuoteBundleItemExpanderInterface
         return $this->copyItemShipmentsToBundleItems($quoteTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuoteTransfer
-     */
     protected function copyItemShipmentsToBundleItems(QuoteTransfer $quoteTransfer): QuoteTransfer
     {
         $indexedShipmentTransfers = $this->getShipmentTransfersIndexedByBundleIdentifier($quoteTransfer);

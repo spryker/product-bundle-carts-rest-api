@@ -48,11 +48,6 @@ class BundleItemExpander implements BundleItemExpanderInterface
      */
     protected $bundleItemRestResponseBuilder;
 
-    /**
-     * @param \Spryker\Glue\ProductBundleCartsRestApi\Dependency\Client\ProductBundleCartsRestApiToProductBundleClientInterface $productBundleClient
-     * @param \Spryker\Glue\ProductBundleCartsRestApi\Dependency\RestResource\ProductBundleCartsRestApiToCartsRestApiResourceInterface $cartsRestApiResource
-     * @param \Spryker\Glue\ProductBundleCartsRestApi\Processor\RestResponseBuilder\BundleItemRestResponseBuilderInterface $bundleItemRestResponseBuilder
-     */
     public function __construct(
         ProductBundleCartsRestApiToProductBundleClientInterface $productBundleClient,
         ProductBundleCartsRestApiToCartsRestApiResourceInterface $cartsRestApiResource,
@@ -152,11 +147,6 @@ class BundleItemExpander implements BundleItemExpanderInterface
         return $bundleItemTransfers;
     }
 
-    /**
-     * @param \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResourceInterface $resource
-     *
-     * @return bool
-     */
     protected function isCartsResourceValid(RestResourceInterface $resource): bool
     {
         return $resource->getType() === ProductBundleCartsRestApiConfig::RESOURCE_CARTS
@@ -164,11 +154,6 @@ class BundleItemExpander implements BundleItemExpanderInterface
             && $resource->getPayload() instanceof QuoteTransfer;
     }
 
-    /**
-     * @param \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResourceInterface $resource
-     *
-     * @return bool
-     */
     protected function isGuestCartsResourceValid(RestResourceInterface $resource): bool
     {
         return $resource->getType() === ProductBundleCartsRestApiConfig::RESOURCE_GUEST_CARTS

@@ -18,17 +18,11 @@ use Spryker\Zed\ProductBundleCartsRestApi\Business\Validator\BundleItemValidator
  */
 class ProductBundleCartsRestApiBusinessFactory extends AbstractBusinessFactory
 {
-    /**
-     * @return \Spryker\Zed\ProductBundleCartsRestApi\Business\Validator\BundleItemValidatorInterface
-     */
     public function createBundleItemValidator(): BundleItemValidatorInterface
     {
         return new BundleItemValidator();
     }
 
-    /**
-     * @return \Spryker\Zed\ProductBundleCartsRestApi\Business\Expander\BundleItemExpanderInterface
-     */
     public function createBundleItemExpander(): BundleItemExpanderInterface
     {
         return new BundleItemExpander();

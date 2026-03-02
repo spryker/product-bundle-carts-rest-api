@@ -19,9 +19,6 @@ class BundleItemFilter implements BundleItemFilterInterface
      */
     protected $productBundleClient;
 
-    /**
-     * @param \Spryker\Glue\ProductBundleCartsRestApi\Dependency\Client\ProductBundleCartsRestApiToProductBundleClientInterface $productBundleClient
-     */
     public function __construct(ProductBundleCartsRestApiToProductBundleClientInterface $productBundleClient)
     {
         $this->productBundleClient = $productBundleClient;

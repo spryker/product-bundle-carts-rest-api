@@ -23,9 +23,6 @@ use Spryker\Glue\ProductBundleCartsRestApi\Processor\RestResponseBuilder\BundleI
 
 class ProductBundleCartsRestApiFactory extends AbstractFactory
 {
-    /**
-     * @return \Spryker\Glue\ProductBundleCartsRestApi\Processor\Expander\BundleItemExpanderInterface
-     */
     public function createBundleItemExpander(): BundleItemExpanderInterface
     {
         return new BundleItemExpander(
@@ -35,9 +32,6 @@ class ProductBundleCartsRestApiFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \Spryker\Glue\ProductBundleCartsRestApi\Processor\Expander\BundledItemExpanderInterface
-     */
     public function createBundledItemExpander(): BundledItemExpanderInterface
     {
         return new BundledItemExpander(
@@ -47,41 +41,26 @@ class ProductBundleCartsRestApiFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \Spryker\Glue\ProductBundleCartsRestApi\Processor\RestResponseBuilder\BundleItemRestResponseBuilderInterface
-     */
     public function createBundleItemRestResponseBuilder(): BundleItemRestResponseBuilderInterface
     {
         return new BundleItemRestResponseBuilder($this->getResourceBuilder());
     }
 
-    /**
-     * @return \Spryker\Glue\ProductBundleCartsRestApi\Processor\Filter\BundleItemFilterInterface
-     */
     public function createBundleItemFilter(): BundleItemFilterInterface
     {
         return new BundleItemFilter($this->getProductBundleClient());
     }
 
-    /**
-     * @return \Spryker\Glue\ProductBundleCartsRestApi\Processor\Expander\QuoteBundleItemExpanderInterface
-     */
     public function createQuoteBundleItemExpander(): QuoteBundleItemExpanderInterface
     {
         return new QuoteBundleItemExpander();
     }
 
-    /**
-     * @return \Spryker\Glue\ProductBundleCartsRestApi\Dependency\Client\ProductBundleCartsRestApiToProductBundleClientInterface
-     */
     public function getProductBundleClient(): ProductBundleCartsRestApiToProductBundleClientInterface
     {
         return $this->getProvidedDependency(ProductBundleCartsRestApiDependencyProvider::CLIENT_PRODUCT_BUNDLE);
     }
 
-    /**
-     * @return \Spryker\Glue\ProductBundleCartsRestApi\Dependency\RestResource\ProductBundleCartsRestApiToCartsRestApiResourceInterface
-     */
     public function getCartsRestApiResource(): ProductBundleCartsRestApiToCartsRestApiResourceInterface
     {
         return $this->getProvidedDependency(ProductBundleCartsRestApiDependencyProvider::RESOURCE_CARTS_REST_API);

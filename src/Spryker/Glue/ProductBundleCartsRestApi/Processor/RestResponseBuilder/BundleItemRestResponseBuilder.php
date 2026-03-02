@@ -22,21 +22,11 @@ class BundleItemRestResponseBuilder implements BundleItemRestResponseBuilderInte
      */
     protected $restResourceBuilder;
 
-    /**
-     * @param \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResourceBuilderInterface $restResourceBuilder
-     */
     public function __construct(RestResourceBuilderInterface $restResourceBuilder)
     {
         $this->restResourceBuilder = $restResourceBuilder;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
-     * @param \Generated\Shared\Transfer\RestItemsAttributesTransfer $restItemsAttributesTransfer
-     *
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResourceInterface
-     */
     public function createBundleItemResource(
         QuoteTransfer $quoteTransfer,
         ItemTransfer $itemTransfer,
@@ -60,13 +50,6 @@ class BundleItemRestResponseBuilder implements BundleItemRestResponseBuilderInte
         return $bundleItemRestResource->addLink(RestLinkInterface::LINK_SELF, $bundleItemSelfLink);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
-     * @param \Generated\Shared\Transfer\RestItemsAttributesTransfer $restItemsAttributesTransfer
-     *
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResourceInterface
-     */
     public function createGuestBundleItemResource(
         QuoteTransfer $quoteTransfer,
         ItemTransfer $itemTransfer,
@@ -90,12 +73,6 @@ class BundleItemRestResponseBuilder implements BundleItemRestResponseBuilderInte
         return $bundleItemRestResource->addLink(RestLinkInterface::LINK_SELF, $bundleItemSelfLink);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ItemTransfer $bundleItemTransfer
-     * @param \Generated\Shared\Transfer\RestItemsAttributesTransfer $restItemsAttributesTransfer
-     *
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResourceInterface
-     */
     public function createBundledItemResource(
         ItemTransfer $bundleItemTransfer,
         RestItemsAttributesTransfer $restItemsAttributesTransfer
