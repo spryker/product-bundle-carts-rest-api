@@ -1,0 +1,74 @@
+resource:
+    name: BundledItems
+    shortName: bundled-items
+    description: 'Component items of a bundle — children of a bundle-items resource.'
+
+    paginationEnabled: false
+
+    includableIn:
+        - resource: BundleItems
+          relationshipName: bundled-items
+
+    properties:
+        groupKey:
+            type: string
+            identifier: true
+            writable: false
+            readable: true
+            required: false
+            description: 'Stable hash that identifies this component item inside the bundle. The parent bundle exposes the same `groupKey` on its `BundleItems` representation, which links a bundled-item back to the bundle it belongs to.'
+            openapiContext:
+                example: 'bundle-group-key-example'
+
+        sku:
+            type: string
+            writable: false
+            readable: true
+            required: false
+            description: 'SKU of the concrete component product packaged inside the bundle (one row per component, even if the bundle template lists the same component twice).'
+            openapiContext:
+                example: '218_456'
+
+        quantity:
+            type: integer
+            writable: false
+            readable: true
+            required: false
+            description: 'How many copies of this component the bundle template ships per bundle, multiplied by the bundle quantity in the cart (i.e. `bundleTemplate.componentQuantity * BundleItems.quantity`).'
+            openapiContext:
+                example: 2
+
+        abstractSku:
+            type: string
+            writable: false
+            readable: true
+            required: false
+            description: 'Abstract-product SKU the component concrete belongs to.'
+            openapiContext:
+                example: '218'
+
+        amount:
+            type: integer
+            writable: false
+            readable: true
+            required: false
+            description: 'Measurement amount per component for measurable products (e.g. number of kilograms or litres); `null` for ordinary count-based components.'
+            openapiContext:
+                example: null
+
+        calculations:
+            type: map
+            writable: false
+            readable: true
+            required: false
+            description: 'Calculated component prices and totals in cents — `unitPrice`/`sumPrice` are the listed price aggregated to the line, `unitGrossPrice`/`unitNetPrice` and their `sum*` siblings break the totals into gross/net for the configured `priceMode`, `unitDiscountAmountAggregation` and `sumDiscountAmountAggregation` carry per-component discount totals.'
+            openapiContext:
+                example:
+                    unitPrice: 4950
+                    sumPrice: 9900
+                    unitGrossPrice: 4950
+                    sumGrossPrice: 9900
+                    unitNetPrice: 4159
+                    sumNetPrice: 8319
+                    unitDiscountAmountAggregation: 495
+                    sumDiscountAmountAggregation: 990

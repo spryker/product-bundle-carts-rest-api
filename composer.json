@@ -15,9 +15,13 @@
         "spryker/transfer": "^3.42.0"
     },
     "require-dev": {
+        "spryker/api-platform": "^1.0.0",
         "spryker/code-sniffer": "*",
         "spryker/container": "*",
         "spryker/testify": "*"
+    },
+    "suggest": {
+        "spryker/api-platform": "If you want to expose ProductBundleCartsRestApi resources through the API Platform stack."
     },
     "autoload": {
         "psr-4": {

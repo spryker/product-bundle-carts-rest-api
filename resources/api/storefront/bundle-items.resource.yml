@@ -1,0 +1,88 @@
+resource:
+    name: BundleItems
+    shortName: bundle-items
+    description: 'Bundle (parent) items in a cart — each represents a bundle product whose component items are exposed via the bundled-items relationship.'
+
+    paginationEnabled: false
+
+    includableIn:
+        - resource: Carts
+          relationshipName: bundle-items
+        - resource: GuestCarts
+          relationshipName: bundle-items
+
+    includes:
+        - relationshipName: bundled-items
+          targetResource: BundledItems
+          resolverClass: Spryker\Glue\ProductBundleCartsRestApi\Api\Storefront\Relationship\BundleItemsBundledItemsRelationshipResolver
+
+    properties:
+        groupKey:
+            type: string
+            identifier: true
+            writable: false
+            readable: true
+            required: false
+            description: 'Stable hash that identifies one bundle instance in the cart. Two bundles of the same SKU with different option/configuration choices live under different `groupKey`s, so this is what links the parent bundle to its bundled-items.'
+            openapiContext:
+                example: 'bundle-group-key-example'
+
+        sku:
+            type: string
+            writable: false
+            readable: true
+            required: false
+            description: 'SKU of the concrete bundle product (the parent product, not its components).'
+            openapiContext:
+                example: '215_123'
+
+        quantity:
+            type: integer
+            writable: false
+            readable: true
+            required: false
+            description: 'How many copies of this bundle the customer has in the cart.'
+            openapiContext:
+                example: 2
+
+        abstractSku:
+            type: string
+            writable: false
+            readable: true
+            required: false
+            description: 'Abstract-product SKU the bundle concrete belongs to.'
+            openapiContext:
+                example: '215'
+
+        amount:
+            type: integer
+            writable: false
+            readable: true
+            required: false
+            description: 'Measurement amount per bundle for measurable bundle products (e.g. number of kilograms or litres per bundle); `null` for ordinary count-based bundles.'
+            openapiContext:
+                example: null
+
+        calculations:
+            type: map
+            writable: false
+            readable: true
+            required: false
+            description: 'Calculated bundle prices and totals in cents — `unitPrice`/`sumPrice` are the listed price aggregated to the bundle, `unitGrossPrice`/`unitNetPrice` and their `sum*` siblings break the totals into gross/net for the configured `priceMode`, `unitDiscountAmountAggregation` and `sumDiscountAmountAggregation` carry per-bundle discount totals.'
+            openapiContext:
+                example:
+                    unitPrice: 9900
+                    sumPrice: 19800
+                    unitGrossPrice: 9900
+                    sumGrossPrice: 19800
+                    unitNetPrice: 8319
+                    sumNetPrice: 16638
+                    unitDiscountAmountAggregation: 990
+                    sumDiscountAmountAggregation: 1980
+
+        bundledItems:
+            type: array
+            writable: false
+            readable: false
+            required: false
+            description: 'Component items that belong to this bundle, surfaced as the `bundled-items` relationship when the response is requested with `?include=bundled-items`.'
