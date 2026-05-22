@@ -5,12 +5,6 @@ resource:
 
     paginationEnabled: false
 
-    includableIn:
-        - resource: Carts
-          relationshipName: bundle-items
-        - resource: GuestCarts
-          relationshipName: bundle-items
-
     includes:
         - relationshipName: bundled-items
           targetResource: BundledItems

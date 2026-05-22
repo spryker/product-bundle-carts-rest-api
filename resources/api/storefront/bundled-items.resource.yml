@@ -5,10 +5,6 @@ resource:
 
     paginationEnabled: false
 
-    includableIn:
-        - resource: BundleItems
-          relationshipName: bundled-items
-
     properties:
         groupKey:
             type: string
