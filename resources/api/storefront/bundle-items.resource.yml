@@ -74,6 +74,47 @@ resource:
                     unitDiscountAmountAggregation: 990
                     sumDiscountAmountAggregation: 1980
 
+        selectedProductOptions:
+            type: array
+            writable: false
+            readable: true
+            required: false
+            description: 'Product options selected for this bundle item (e.g. warranty, gift wrapping). Empty for bundles that carry no product options.'
+            openapiContext:
+                example:
+                    - optionGroupName: 'Gift wrapping'
+                      sku: 'OP_gift_wrapping'
+                      optionName: 'Gift wrapping'
+                      price: 3000
+
+        configuredBundle:
+            type: map
+            nullable: true
+            writable: false
+            readable: true
+            required: false
+            description: 'Always null for bundle-item resources. Bundle products are not configured bundles; only configured-bundle-item resources carry a populated configuredBundle object.'
+            openapiContext:
+                example:
+                    groupKey: 'some-configured-bundle-key-1'
+                    quantity: 1
+                    template:
+                        uuid: 'c8291fd3-c6ca-5b8f-8ff5-eccd6cb787de'
+                        name: 'Smartstation Kit'
+
+        configuredBundleItem:
+            type: map
+            nullable: true
+            writable: false
+            readable: true
+            required: false
+            description: 'Always null for bundle-item resources. Bundle products are not configured bundles; only configured-bundle-item resources carry a populated configuredBundleItem object.'
+            openapiContext:
+                example:
+                    quantityPerSlot: 1
+                    slot:
+                        uuid: '9626de80-6caa-57a9-a683-2846ec5b6914'
+
         bundledItems:
             type: array
             writable: false
