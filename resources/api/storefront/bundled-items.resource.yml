@@ -5,6 +5,13 @@ resource:
 
     paginationEnabled: false
 
+    includes:
+        - relationshipName: concrete-products
+          targetResource: ConcreteProducts
+          uriTemplate: /concrete-products/{sku}
+          uriVariableMappings:
+              sku: sku
+
     properties:
         groupKey:
             type: string
