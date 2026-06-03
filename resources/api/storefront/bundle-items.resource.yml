@@ -2,6 +2,7 @@ resource:
     name: BundleItems
     shortName: bundle-items
     description: 'Bundle (parent) items in a cart — each represents a bundle product whose component items are exposed via the bundled-items relationship.'
+    includedSortPriority: 100
 
     paginationEnabled: false
 
