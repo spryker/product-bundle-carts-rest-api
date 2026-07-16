@@ -65,21 +65,108 @@ resource:
                 example: null
 
         calculations:
-            type: map
+            type: object
+            objectName: Calculations
             writable: false
             readable: true
             required: false
             description: 'Calculated bundle prices and totals in cents — `unitPrice`/`sumPrice` are the listed price aggregated to the bundle, `unitGrossPrice`/`unitNetPrice` and their `sum*` siblings break the totals into gross/net for the configured `priceMode`, `unitDiscountAmountAggregation` and `sumDiscountAmountAggregation` carry per-bundle discount totals.'
-            openapiContext:
-                example:
-                    unitPrice: 9900
-                    sumPrice: 19800
-                    unitGrossPrice: 9900
-                    sumGrossPrice: 19800
-                    unitNetPrice: 8319
-                    sumNetPrice: 16638
-                    unitDiscountAmountAggregation: 990
-                    sumDiscountAmountAggregation: 1980
+            properties:
+                unitPrice:
+                    type: integer
+                    description: 'Listed unit price in cents.'
+                    openapiContext:
+                        example: 9900
+                sumPrice:
+                    type: integer
+                    description: 'Listed price aggregated to the line in cents.'
+                    openapiContext:
+                        example: 19800
+                unitGrossPrice:
+                    type: integer
+                    description: 'Gross unit price in cents.'
+                    openapiContext:
+                        example: 9900
+                sumGrossPrice:
+                    type: integer
+                    description: 'Gross price aggregated to the line in cents.'
+                    openapiContext:
+                        example: 19800
+                unitNetPrice:
+                    type: integer
+                    description: 'Net unit price in cents.'
+                    openapiContext:
+                        example: 8319
+                sumNetPrice:
+                    type: integer
+                    description: 'Net price aggregated to the line in cents.'
+                    openapiContext:
+                        example: 16638
+                unitDiscountAmountAggregation:
+                    type: integer
+                    description: 'Per-unit discount total in cents.'
+                    openapiContext:
+                        example: 990
+                sumDiscountAmountAggregation:
+                    type: integer
+                    description: 'Aggregated discount total in cents.'
+                    openapiContext:
+                        example: 1980
+                taxRate:
+                    type: integer
+                    description: 'Tax rate applied to the item, in percent.'
+                    openapiContext:
+                        example: 19
+                unitTaxAmountFullAggregation:
+                    type: integer
+                    description: 'Aggregated tax amount per unit in cents.'
+                    openapiContext:
+                        example: 635
+                sumTaxAmountFullAggregation:
+                    type: integer
+                    description: 'Aggregated tax amount for the sum in cents.'
+                    openapiContext:
+                        example: 635
+                unitPriceToPayAggregation:
+                    type: integer
+                    description: 'Price to pay per unit after all aggregations, in cents.'
+                    openapiContext:
+                        example: 3616
+                sumPriceToPayAggregation:
+                    type: integer
+                    description: 'Price to pay for the sum after all aggregations, in cents.'
+                    openapiContext:
+                        example: 3616
+                unitSubtotalAggregation:
+                    type: integer
+                    description: 'Aggregated subtotal per unit in cents.'
+                    openapiContext:
+                        example: 3979
+                sumSubtotalAggregation:
+                    type: integer
+                    description: 'Aggregated subtotal for the sum in cents.'
+                    openapiContext:
+                        example: 3979
+                unitDiscountAmountFullAggregation:
+                    type: integer
+                    description: 'Fully aggregated discount amount per unit in cents.'
+                    openapiContext:
+                        example: 363
+                sumDiscountAmountFullAggregation:
+                    type: integer
+                    description: 'Fully aggregated discount amount for the sum in cents.'
+                    openapiContext:
+                        example: 363
+                unitProductOptionPriceAggregation:
+                    type: integer
+                    description: 'Aggregated product option price per unit in cents.'
+                    openapiContext:
+                        example: 0
+                sumProductOptionPriceAggregation:
+                    type: integer
+                    description: 'Aggregated product option price for the sum in cents.'
+                    openapiContext:
+                        example: 0
 
         selectedProductOptions:
             type: array
@@ -95,32 +182,62 @@ resource:
                       price: 3000
 
         configuredBundle:
-            type: map
+            type: object
+            objectName: ProductBundleConfiguredBundle
             nullable: true
             writable: false
             readable: true
             required: false
             description: 'Always null for bundle-item resources. Bundle products are not configured bundles; only configured-bundle-item resources carry a populated configuredBundle object.'
-            openapiContext:
-                example:
-                    groupKey: 'some-configured-bundle-key-1'
-                    quantity: 1
-                    template:
-                        uuid: 'c8291fd3-c6ca-5b8f-8ff5-eccd6cb787de'
-                        name: 'Smartstation Kit'
+            properties:
+                groupKey:
+                    type: string
+                    description: 'Stable hash identifying the configured-bundle instance.'
+                    openapiContext:
+                        example: 'some-configured-bundle-key-1'
+                quantity:
+                    type: integer
+                    description: 'Number of this configured bundle in the cart.'
+                    openapiContext:
+                        example: 1
+                template:
+                    type: object
+                    description: 'The bundle template this configured bundle is based on.'
+                    properties:
+                        uuid:
+                            type: string
+                            description: 'UUID of the bundle template.'
+                            openapiContext:
+                                example: 'c8291fd3-c6ca-5b8f-8ff5-eccd6cb787de'
+                        name:
+                            type: string
+                            description: 'Human-readable name of the bundle template.'
+                            openapiContext:
+                                example: 'Smartstation Kit'
 
         configuredBundleItem:
-            type: map
+            type: object
+            objectName: ProductBundleConfiguredBundleItem
             nullable: true
             writable: false
             readable: true
             required: false
             description: 'Always null for bundle-item resources. Bundle products are not configured bundles; only configured-bundle-item resources carry a populated configuredBundleItem object.'
-            openapiContext:
-                example:
-                    quantityPerSlot: 1
-                    slot:
-                        uuid: '9626de80-6caa-57a9-a683-2846ec5b6914'
+            properties:
+                quantityPerSlot:
+                    type: integer
+                    description: 'Number of this product per template slot.'
+                    openapiContext:
+                        example: 1
+                slot:
+                    type: object
+                    description: 'The template slot this item fulfils.'
+                    properties:
+                        uuid:
+                            type: string
+                            description: 'UUID of the template slot.'
+                            openapiContext:
+                                example: '9626de80-6caa-57a9-a683-2846ec5b6914'
 
         bundledItems:
             type: array

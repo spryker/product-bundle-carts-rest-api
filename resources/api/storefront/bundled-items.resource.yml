@@ -60,18 +60,105 @@ resource:
                 example: null
 
         calculations:
-            type: map
+            type: object
+            objectName: Calculations
             writable: false
             readable: true
             required: false
             description: 'Calculated component prices and totals in cents — `unitPrice`/`sumPrice` are the listed price aggregated to the line, `unitGrossPrice`/`unitNetPrice` and their `sum*` siblings break the totals into gross/net for the configured `priceMode`, `unitDiscountAmountAggregation` and `sumDiscountAmountAggregation` carry per-component discount totals.'
-            openapiContext:
-                example:
-                    unitPrice: 4950
-                    sumPrice: 9900
-                    unitGrossPrice: 4950
-                    sumGrossPrice: 9900
-                    unitNetPrice: 4159
-                    sumNetPrice: 8319
-                    unitDiscountAmountAggregation: 495
-                    sumDiscountAmountAggregation: 990
+            properties:
+                unitPrice:
+                    type: integer
+                    description: 'Listed unit price in cents.'
+                    openapiContext:
+                        example: 4950
+                sumPrice:
+                    type: integer
+                    description: 'Listed price aggregated to the line in cents.'
+                    openapiContext:
+                        example: 9900
+                unitGrossPrice:
+                    type: integer
+                    description: 'Gross unit price in cents.'
+                    openapiContext:
+                        example: 4950
+                sumGrossPrice:
+                    type: integer
+                    description: 'Gross price aggregated to the line in cents.'
+                    openapiContext:
+                        example: 9900
+                unitNetPrice:
+                    type: integer
+                    description: 'Net unit price in cents.'
+                    openapiContext:
+                        example: 4159
+                sumNetPrice:
+                    type: integer
+                    description: 'Net price aggregated to the line in cents.'
+                    openapiContext:
+                        example: 8319
+                unitDiscountAmountAggregation:
+                    type: integer
+                    description: 'Per-unit discount total in cents.'
+                    openapiContext:
+                        example: 495
+                sumDiscountAmountAggregation:
+                    type: integer
+                    description: 'Aggregated discount total in cents.'
+                    openapiContext:
+                        example: 990
+                taxRate:
+                    type: integer
+                    description: 'Tax rate applied to the item, in percent.'
+                    openapiContext:
+                        example: 19
+                unitTaxAmountFullAggregation:
+                    type: integer
+                    description: 'Aggregated tax amount per unit in cents.'
+                    openapiContext:
+                        example: 635
+                sumTaxAmountFullAggregation:
+                    type: integer
+                    description: 'Aggregated tax amount for the sum in cents.'
+                    openapiContext:
+                        example: 635
+                unitPriceToPayAggregation:
+                    type: integer
+                    description: 'Price to pay per unit after all aggregations, in cents.'
+                    openapiContext:
+                        example: 3616
+                sumPriceToPayAggregation:
+                    type: integer
+                    description: 'Price to pay for the sum after all aggregations, in cents.'
+                    openapiContext:
+                        example: 3616
+                unitSubtotalAggregation:
+                    type: integer
+                    description: 'Aggregated subtotal per unit in cents.'
+                    openapiContext:
+                        example: 3979
+                sumSubtotalAggregation:
+                    type: integer
+                    description: 'Aggregated subtotal for the sum in cents.'
+                    openapiContext:
+                        example: 3979
+                unitDiscountAmountFullAggregation:
+                    type: integer
+                    description: 'Fully aggregated discount amount per unit in cents.'
+                    openapiContext:
+                        example: 363
+                sumDiscountAmountFullAggregation:
+                    type: integer
+                    description: 'Fully aggregated discount amount for the sum in cents.'
+                    openapiContext:
+                        example: 363
+                unitProductOptionPriceAggregation:
+                    type: integer
+                    description: 'Aggregated product option price per unit in cents.'
+                    openapiContext:
+                        example: 0
+                sumProductOptionPriceAggregation:
+                    type: integer
+                    description: 'Aggregated product option price for the sum in cents.'
+                    openapiContext:
+                        example: 0
