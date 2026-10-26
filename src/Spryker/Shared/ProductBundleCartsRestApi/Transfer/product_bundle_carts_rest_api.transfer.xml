@@ -78,4 +78,8 @@
         <property name="items" type="Item[]" singular="item" description="A collection of items, typically in a cart, order, or list."/>
     </transfer>
 
+    <transfer name="Locale">
+        <property name="localeName" type="string"/>
+    </transfer>
+
 </transfers>
